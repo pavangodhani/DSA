@@ -7,16 +7,30 @@ SinglyLinkedList<int> singlyLinkedList = new();
 
 Random random = new Random();
 
-int n = 10;
+int n = 5;
 while (n != 0)
 {
-    singlyLinkedList.Insert(n);
+    singlyLinkedList.InsertAtTail(n);
     n--;
 }
 
-//singlyLinkedList.Head.Following.Following.Following = singlyLinkedList.Head;
+for (int i = 0; i < singlyLinkedList.Count; i++)
+{
+    Console.WriteLine($"Index {i} : {singlyLinkedList.ElementAt(i)}");
+}
 
-Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
+
+
+//singlyLinkedList.InsertAtHead(11);
+//singlyLinkedList.InsertAtTail(0);
+singlyLinkedList.InsertAtMiddle(1010101010);
+
+//singlyLinkedList.InsertAt(1, 11111);
+//singlyLinkedList.InsertAt(0, 11111);
+//singlyLinkedList.InsertAt(7, 11111);
+//singlyLinkedList.InsertAt(12, 11111);
+//singlyLinkedList.InsertAt(100, 11111);
 
 //singlyLinkedList.Remove();
 //singlyLinkedList.Remove();
@@ -24,12 +38,23 @@ Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
 //singlyLinkedList.RemoveFromBeginning();
 //singlyLinkedList.RemoveFromBeginning();
 
-//for (int i = 0; i < singlyLinkedList.Count; i++)
-//{
-//    Console.WriteLine($"Position {i + 1} : {singlyLinkedList.ElementAt(i)}");
-//}
 
-//Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
+
 
 //Console.WriteLine($"Element present: {singlyLinkedList.Contains(7)}");
 #endregion
+
+#region Detect Loop
+//singlyLinkedList.Head.Following.Following.Following = singlyLinkedList.Head;
+//singlyLinkedList.Head.Following = singlyLinkedList.Head;
+
+//Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+
+#endregion
+
+Console.WriteLine("************************After performing some operations************************");
+for (int i = 0; i < singlyLinkedList.Count; i++)
+{
+    Console.WriteLine($"Index {i} : {singlyLinkedList.ElementAt(i)}");
+}
+Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");

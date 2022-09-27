@@ -1,17 +1,40 @@
-﻿namespace SinglyLinkedList.Models
+﻿using System.Xml.Linq;
+
+namespace SinglyLinkedList.Models
 {
     public class SinglyLinkedList<T>
     {
         public Node<T>? Head;
 
-        public long Count { get; private set; }
+        public int Count { get; private set; }
 
         public SinglyLinkedList()
         {
         }
 
         #region Public Methods
-        public void Insert(T element)
+        public void InsertAtHead(T element)
+        {
+            Node<T> newNode = new(element);
+
+            if (Head is null)
+                Head = newNode;
+            else
+            {
+                newNode.Following = Head;
+                Head = newNode;
+            }
+
+            Count++;
+        }
+
+        public void InsertAtMiddle(T element)
+        {
+            int position = (Count - 1) / 2;
+            InsertAt(position, element);
+        }
+
+        public void InsertAtTail(T element)
         {
             Node<T> newNode = new(element);
 
@@ -29,6 +52,37 @@
 
             Count++;
         }
+
+        public void InsertAt(int position, T element)
+        {
+            if (position <= 0)
+            {
+                InsertAtHead(element);
+                return;
+            }
+
+            if (position >= Count)
+            {
+                InsertAtTail(element);
+                return;
+            }
+
+            Node<T> newNode = new(element);
+            
+            if (Head is null)
+                Head = newNode;
+            else
+            {
+                var precedingNode = NodeAt(position - 1);
+                if (precedingNode is null) return;
+
+                newNode.Following = precedingNode.Following;
+                precedingNode.Following = newNode;
+            }
+
+            Count++;
+        }
+
 
         public void RemoveFromBeginning()
         {
@@ -117,6 +171,20 @@
         #endregion
 
         #region Private Methods
+        private Node<T>? NodeAt(int position)
+        {
+            if (Head is null || position >= Count || position < 0)
+                return null;
+
+            var node = Head;
+            for (int i = 1; i <= position; i++)
+            {
+                node = node?.Following;
+            }
+
+            return node;
+        }
+
         private long SizeRec(Node<T>? element)
         {
             if (element is null)
@@ -161,9 +229,8 @@
             if (Head is null)
                 return false;
 
-            Node<T>? node_slow = Head;
-            Node<T>? node_fast = Head;
-
+            var node_slow = Head;
+            var node_fast = Head;
 
             while (node_slow != null &&
                    node_fast != null &&
@@ -172,7 +239,7 @@
                 node_slow = node_slow.Following;
                 node_fast = node_fast.Following.Following;
 
-                if (node_slow == node_fast)
+                if (node_fast == node_slow)
                     return true;
             }
 
