@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace SinglyLinkedList.Models
+﻿namespace SinglyLinkedList.Models
 {
     public class SinglyLinkedList<T>
     {
