@@ -15,17 +15,8 @@ namespace SinglyLinkedList.Models
         #region Public Methods
         public void InsertAtHead(T element)
         {
-            Node<T> newNode = new(element);
-
-            if (Head is null)
-                Head = newNode;
-            else
-            {
-                newNode.Following = Head;
-                Head = newNode;
-            }
-
-            Count++;
+            int position = 0;
+            InsertAt(position, element);
         }
 
         public void InsertAtMiddle(T element)
@@ -36,46 +27,24 @@ namespace SinglyLinkedList.Models
 
         public void InsertAtTail(T element)
         {
-            Node<T> newNode = new(element);
-
-            if (Head is null)
-                Head = newNode;
-            else
-            {
-                Node<T> last = Head;
-
-                while (last.Following != null)
-                    last = last.Following;
-
-                last.Following = newNode;
-            }
-
-            Count++;
+            int position = Count;
+            InsertAt(position, element);
         }
 
         public void InsertAt(int position, T element)
         {
-            if (position <= 0)
-            {
-                InsertAtHead(element);
-                return;
-            }
-
-            if (position >= Count)
-            {
-                InsertAtTail(element);
-                return;
-            }
-
             Node<T> newNode = new(element);
-            
-            if (Head is null)
+            var precedingNode = NodeAt(position - 1);
+
+            if (Head is null || precedingNode is null)
                 Head = newNode;
+            else if (position <= 0)
+            {
+                newNode.Following = Head;
+                Head = newNode;
+            }
             else
             {
-                var precedingNode = NodeAt(position - 1);
-                if (precedingNode is null) return;
-
                 newNode.Following = precedingNode.Following;
                 precedingNode.Following = newNode;
             }
@@ -83,8 +52,7 @@ namespace SinglyLinkedList.Models
             Count++;
         }
 
-
-        public void RemoveFromBeginning()
+        public void RemoveAtHead()
         {
             if (Head is null)
                 return;
@@ -93,7 +61,7 @@ namespace SinglyLinkedList.Models
             Count--;
         }
 
-        public void Remove()
+        public void RemoveAtTail()
         {
             if (Head is null)
                 return;
@@ -117,22 +85,24 @@ namespace SinglyLinkedList.Models
 
         public void RemoveAt(int position)
         {
-            if (position > Count - 1 || position < 0)
-                throw new IndexOutOfRangeException();
-
             if (Head is null)
                 return;
 
-            Node<T> preceding = Head;
-            Node<T> element = Head;
-
-            for (int i = 1; i <= position; i++)
+            if (position <= 0)
+                Head = Head.Following;
+            else
             {
-                preceding = element;
-                element = element.Following!;
-            }
+                Node<T> preceding = Head;
+                Node<T> element = Head;
 
-            preceding.Following = element.Following;
+                for (int i = 1; i <= position; i++)
+                {
+                    preceding = element;
+                    element = element.Following!;
+                }
+
+                preceding.Following = element.Following;
+            }
             Count--;
         }
 
@@ -173,8 +143,12 @@ namespace SinglyLinkedList.Models
         #region Private Methods
         private Node<T>? NodeAt(int position)
         {
-            if (Head is null || position >= Count || position < 0)
-                return null;
+            if (Head is null) return Head;
+
+            if (position < 0)
+                position = 0;
+            else if (position >= Count)
+                position = Count - 1;
 
             var node = Head;
             for (int i = 1; i <= position; i++)

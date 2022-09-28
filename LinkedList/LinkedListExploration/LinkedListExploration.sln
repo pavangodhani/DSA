@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListExploration", "LinkedListExploration\LinkedListExploration.csproj", "{A0D96FEB-E9C9-4004-AC7D-A3A0A133D530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListExploration", "LinkedListExploration\LinkedListExploration.csproj", "{A0D96FEB-E9C9-4004-AC7D-A3A0A133D530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglyLinkedList", "SinglyLinkedList\SinglyLinkedList.csproj", "{174B512C-8306-4022-BE12-6B402135EF66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinglyLinkedList", "SinglyLinkedList\SinglyLinkedList.csproj", "{174B512C-8306-4022-BE12-6B402135EF66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublyLinkedList", "DoublyLinkedList\DoublyLinkedList.csproj", "{752C5FF0-E50B-465D-B9F8-11F38B6A2A20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{174B512C-8306-4022-BE12-6B402135EF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174B512C-8306-4022-BE12-6B402135EF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174B512C-8306-4022-BE12-6B402135EF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752C5FF0-E50B-465D-B9F8-11F38B6A2A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752C5FF0-E50B-465D-B9F8-11F38B6A2A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752C5FF0-E50B-465D-B9F8-11F38B6A2A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752C5FF0-E50B-465D-B9F8-11F38B6A2A20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
