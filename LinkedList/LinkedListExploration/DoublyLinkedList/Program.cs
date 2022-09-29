@@ -28,6 +28,16 @@ PrintLinkedList("InsertAt");
 doublyLinkedList.InsertAt(50, 101010);
 PrintLinkedList("InsertAt");
 
+doublyLinkedList.RemoveAt(0);
+PrintLinkedList("RemoveAt");
+doublyLinkedList.RemoveAt(2);
+PrintLinkedList("RemoveAt");
+doublyLinkedList.RemoveAt(50);
+PrintLinkedList("RemoveAt");
+doublyLinkedList.RemoveAt(1);
+PrintLinkedList("RemoveAt");
+
+
 void PrintLinkedList(string? operation = null)
 {
     string message = operation ?? "After performing some operations";

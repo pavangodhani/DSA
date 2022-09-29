@@ -51,6 +51,30 @@
             Count++;
         }
 
+        public void RemoveAt(int position)
+        {
+            if (Head is null) return;
+
+            if (position < 0)
+                position = 0;
+            else if (position >= Count)
+                position = Count - 1;
+
+            var node = NodeAt(position);
+            var precedingNode = node?.Preceding;
+            var followingNode = node?.Following;
+
+            if (precedingNode is null)
+                Head = followingNode;
+            else
+                precedingNode.Following = followingNode;
+
+            if (followingNode is not null)
+                followingNode.Preceding = precedingNode;
+
+            Count--;
+        }
+
         public T ElementAt(int position)
         {
             var node = NodeAt(position);
