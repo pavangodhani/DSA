@@ -118,7 +118,7 @@
                 element = element.Following!;
             }
 
-            return element.data;
+            return element.Data;
         }
 
         public bool Contains(T element)
@@ -170,7 +170,7 @@
             if (element is null)
                 return false;
 
-            if (element.data!.Equals(elementToFind))
+            if (element.Data!.Equals(elementToFind))
                 return true;
 
             return ContainsRec(element.Following, elementToFind);

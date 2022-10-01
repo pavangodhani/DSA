@@ -4,13 +4,14 @@
 using SinglyLinkedList.Models;
 
 SinglyLinkedList<int> singlyLinkedList = new();
+CircularSinglyLinkedList<int> circularSinglyLinkedList = new();
 
 Random random = new Random();
 
 int n = 5;
 while (n != 0)
 {
-    singlyLinkedList.InsertAtTail(n);
+    circularSinglyLinkedList.InsertAt(n, n);
     n--;
 }
 
@@ -45,7 +46,7 @@ PrintLinkedList("RemoveAt");
 //singlyLinkedList.RemoveFromBeginning();
 
 
-
+Console.ReadLine();
 
 //Console.WriteLine($"Element present: {singlyLinkedList.Contains(7)}");
 #endregion
