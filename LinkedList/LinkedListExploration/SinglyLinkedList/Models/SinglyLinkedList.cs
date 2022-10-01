@@ -136,9 +136,74 @@
             //return DetectLoopUsingHashSet();
             return DetectLoopUsingFloydCycleFindingAlgo();
         }
+
+        public void Reverse()
+        {
+            if (Head is null || Head?.Following is null)
+                return;
+
+            Node<T>? precedingNode = null;
+            Node<T>? current = Head;
+            Node<T>? followingNode;
+
+            while (current != null)
+            {
+                followingNode = current.Following;
+                current.Following = precedingNode;
+                precedingNode = current;
+                current = followingNode;
+            }
+
+            Head = precedingNode;
+        }
+
+        public void ReverseRec()
+        {
+            ReverseRec(null, Head, null);
+        }
+
+        public T? Middle()
+        {
+            if (Head is null)
+                return default;
+
+            if (Head.Following is null)
+                return Head.Data;
+
+            var slowNode = Head;
+            var fastNode = Head.Following;
+
+            while (fastNode != null)
+            {
+                slowNode = slowNode?.Following;
+                fastNode = slowNode?.Following?.Following;
+            }
+            return slowNode.Data;
+        }
+
+        public void ReverseInGroup(int groupCount)
+        {
+            
+        }
         #endregion
 
         #region Private Methods
+        private void ReverseRec(Node<T>? preceding, Node<T>? current, Node<T>? following)
+        {
+            if (current is null)
+            {
+                Head = preceding;
+                return;
+            }
+
+            following = current.Following;
+            current.Following = preceding;
+            preceding = current;
+            current = following;
+
+            ReverseRec(preceding, current, following);
+        }
+
         private Node<T>? NodeAt(int position)
         {
             if (Head is null) return Head;

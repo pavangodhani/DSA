@@ -6,12 +6,10 @@ using SinglyLinkedList.Models;
 SinglyLinkedList<int> singlyLinkedList = new();
 CircularSinglyLinkedList<int> circularSinglyLinkedList = new();
 
-Random random = new Random();
-
-int n = 5;
+int n = 4;
 while (n != 0)
 {
-    circularSinglyLinkedList.InsertAt(n, n);
+    singlyLinkedList.InsertAtTail(n);
     n--;
 }
 
@@ -40,13 +38,18 @@ Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 
 //singlyLinkedList.Remove();
 //singlyLinkedList.Remove();
-singlyLinkedList.RemoveAt(1);
-PrintLinkedList("RemoveAt");
+//singlyLinkedList.RemoveAt(1);
+//PrintLinkedList("RemoveAt");
 //singlyLinkedList.RemoveFromBeginning();
 //singlyLinkedList.RemoveFromBeginning();
 
+singlyLinkedList.Reverse();
+PrintLinkedList("Reverse");
+singlyLinkedList.ReverseRec();
+PrintLinkedList("ReverseRec");
 
-Console.ReadLine();
+Console.WriteLine($"\n\n Middle: {singlyLinkedList.Middle()}");
+
 
 //Console.WriteLine($"Element present: {singlyLinkedList.Contains(7)}");
 #endregion
