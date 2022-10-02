@@ -80,7 +80,76 @@
             var node = NodeAt(position);
             return node!.Data;
         }
+
+        public void Reverse()
+        {
+            if (Head is null)
+                return;
+
+            Node<T>? preceding = null;
+            Node<T>? current = Head;
+            Node<T>? following;
+
+            while (current != null)
+            {
+                following = current.Following;
+                current.Following = preceding;
+                current.Preceding = following;
+                preceding = current;
+                current = following;
+            }
+
+            Head = preceding;
+        }
+
+        public void KReverse(int k)
+        {
+            Head = KReverse(2, Head);
+        }
+
+        public bool DetectLoop()
+        {
+            Node<T>? slow = Head;
+            Node<T>? fast = Head;
+
+            while (slow != null && fast != null)
+            {
+                slow = slow?.Following;
+                fast = fast?.Following?.Following;
+
+                if(slow == fast)
+                    return true;
+            }
+
+            return false;
+        }
         #region Private Methods
+        private Node<T>? KReverse(int k, Node<T>? head)
+        {
+            if (head is null)
+                return head;
+
+            Node<T>? preceding = null;
+            Node<T>? current = head;
+            Node<T>? following = null;
+            int count = 0;
+
+            while (current != null && count < k)
+            {
+                following = current.Following;
+                current.Following = preceding;
+                current.Preceding = following;
+                preceding = current;
+                current = following;
+                count++;
+            }
+
+            if (following != null)
+                head.Following = KReverse(k, following);
+
+            return preceding;
+        }
+
         private Node<T>? NodeAt(int position)
         {
             if (Head is null) return Head;

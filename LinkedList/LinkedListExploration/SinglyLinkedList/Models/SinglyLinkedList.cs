@@ -1,4 +1,6 @@
-﻿namespace SinglyLinkedList.Models
+﻿using System.Runtime.CompilerServices;
+
+namespace SinglyLinkedList.Models
 {
     public class SinglyLinkedList<T>
     {
@@ -185,9 +187,46 @@
         {
             Head = KReverse(groupCount, Head);
         }
+
+        public Node<T>? StartingOfTheLoop()
+        {
+            var pointOfIntersection = PointOfIntersection();
+            if (pointOfIntersection is null)
+                return null;
+
+            var slow = Head;
+
+            while (slow != pointOfIntersection)
+            {
+                slow = slow?.Following;
+                pointOfIntersection = pointOfIntersection?.Following;
+            }
+
+            return slow;
+        }
         #endregion
 
         #region Private Methods
+        private Node<T>? PointOfIntersection()
+        {
+            if (Head is null)
+                return null;
+
+            Node<T>? slow = Head;
+            Node<T>? fast = Head;
+
+            while (slow != null && fast != null)
+            {
+                slow = slow.Following;
+                fast = fast.Following?.Following;
+
+                if (slow == fast)
+                    return slow;
+            }
+
+            return null;
+        }
+
         private Node<T>? KReverse(int k, Node<T>? head)
         {
             if (head is null)
@@ -208,7 +247,7 @@
                 count++;
             }
 
-            if(following is not null)
+            if (following is not null)
                 head.Following = KReverse(k, following);
 
             return preceding;

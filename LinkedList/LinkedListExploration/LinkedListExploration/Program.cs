@@ -45,22 +45,22 @@ Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 
 singlyLinkedList.Reverse();
 PrintLinkedList("Reverse");
-//singlyLinkedList.ReverseRec();
-//PrintLinkedList("ReverseRec");
-singlyLinkedList.ReverseInGroup(2);
-PrintLinkedList("ReverseInGroup");
+////singlyLinkedList.ReverseRec();
+////PrintLinkedList("ReverseRec");
+//singlyLinkedList.ReverseInGroup(2);
+//PrintLinkedList("ReverseInGroup");
 
-Console.WriteLine($"\n\n Middle: {singlyLinkedList.Middle()}");
+//Console.WriteLine($"\n\n Middle: {singlyLinkedList.Middle()}");
 
 
 //Console.WriteLine($"Element present: {singlyLinkedList.Contains(7)}");
 #endregion
 
 #region Detect Loop
-//singlyLinkedList.Head.Following.Following.Following = singlyLinkedList.Head;
-//singlyLinkedList.Head.Following = singlyLinkedList.Head;
+singlyLinkedList.Head.Following.Following.Following.Following = singlyLinkedList.Head.Following;
 
-//Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
 
 #endregion
 
