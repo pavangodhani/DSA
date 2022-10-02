@@ -6,11 +6,12 @@ using SinglyLinkedList.Models;
 SinglyLinkedList<int> singlyLinkedList = new();
 CircularSinglyLinkedList<int> circularSinglyLinkedList = new();
 
-int n = 4;
-while (n != 0)
+int n = 1;
+while (n != 5)
 {
     singlyLinkedList.InsertAtTail(n);
-    n--;
+    singlyLinkedList.InsertAtTail(n);
+    n++;
 }
 
 for (int i = 0; i < singlyLinkedList.Count; i++)
@@ -43,8 +44,8 @@ Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 //singlyLinkedList.RemoveFromBeginning();
 //singlyLinkedList.RemoveFromBeginning();
 
-singlyLinkedList.Reverse();
-PrintLinkedList("Reverse");
+//singlyLinkedList.Reverse();
+//PrintLinkedList("Reverse");
 ////singlyLinkedList.ReverseRec();
 ////PrintLinkedList("ReverseRec");
 //singlyLinkedList.ReverseInGroup(2);
@@ -57,17 +58,22 @@ PrintLinkedList("Reverse");
 #endregion
 
 #region Detect Loop
-singlyLinkedList.Head.Following.Following.Following.Following = singlyLinkedList.Head.Following;
+//singlyLinkedList.Head.Following.Following.Following.Following = singlyLinkedList.Head.Following;
 
-Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
-Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
+//Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+//Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
 
-singlyLinkedList.DetachLoop();
-Console.WriteLine("DetachLoop");
+//singlyLinkedList.DetachLoop();
+//Console.WriteLine("DetachLoop");
 
-Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
-Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
+//Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+//Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
 
+#endregion
+
+#region Remove duplicates
+singlyLinkedList.RemoveDuplicatesFromSortedLL();
+PrintLinkedList("RemoveDuplicatesFromSortedLL");
 #endregion
 
 void PrintLinkedList(string? operation = null)

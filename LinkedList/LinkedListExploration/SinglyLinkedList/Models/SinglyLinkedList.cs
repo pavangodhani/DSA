@@ -220,6 +220,27 @@ namespace SinglyLinkedList.Models
 
             node.Following = null;
         }
+
+        public void RemoveDuplicatesFromSortedLL()
+        {
+            if (Head is null)
+                return;
+
+            Node<T>? current = Head;
+            Node<T>? following = current.Following;
+
+            while (current != null && following != null)
+            {
+                if (current.Data!.Equals(following.Data))
+                {
+                    current.Following = following.Following;
+                    Count--;
+                }
+
+                current = current.Following;
+                following = current?.Following;
+            }
+        }
         #endregion
 
         #region Private Methods
