@@ -45,8 +45,10 @@ Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 
 singlyLinkedList.Reverse();
 PrintLinkedList("Reverse");
-singlyLinkedList.ReverseRec();
-PrintLinkedList("ReverseRec");
+//singlyLinkedList.ReverseRec();
+//PrintLinkedList("ReverseRec");
+singlyLinkedList.ReverseInGroup(2);
+PrintLinkedList("ReverseInGroup");
 
 Console.WriteLine($"\n\n Middle: {singlyLinkedList.Middle()}");
 

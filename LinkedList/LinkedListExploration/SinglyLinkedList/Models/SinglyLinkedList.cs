@@ -183,11 +183,37 @@
 
         public void ReverseInGroup(int groupCount)
         {
-            
+            Head = KReverse(groupCount, Head);
         }
         #endregion
 
         #region Private Methods
+        private Node<T>? KReverse(int k, Node<T>? head)
+        {
+            if (head is null)
+                return head;
+
+            // step 1: reverse a first k nodes
+            Node<T>? preceding = null;
+            Node<T>? current = head;
+            Node<T>? following = null;
+            int count = 0;
+
+            while (current != null && count < k)
+            {
+                following = current.Following;
+                current.Following = preceding;
+                preceding = current;
+                current = following;
+                count++;
+            }
+
+            if(following is not null)
+                head.Following = KReverse(k, following);
+
+            return preceding;
+        }
+
         private void ReverseRec(Node<T>? preceding, Node<T>? current, Node<T>? following)
         {
             if (current is null)
