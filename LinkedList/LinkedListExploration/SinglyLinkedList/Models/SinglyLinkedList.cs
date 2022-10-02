@@ -204,6 +204,22 @@ namespace SinglyLinkedList.Models
 
             return slow;
         }
+
+        public void DetachLoop()
+        {
+            var startingOfLoop = StartingOfTheLoop();
+            if (startingOfLoop is null)
+                return;
+
+            var node = startingOfLoop;
+
+            while (node?.Following != startingOfLoop)
+            {
+                node = node?.Following;
+            }
+
+            node.Following = null;
+        }
         #endregion
 
         #region Private Methods

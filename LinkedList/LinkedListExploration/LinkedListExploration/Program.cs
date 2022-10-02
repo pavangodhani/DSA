@@ -62,6 +62,12 @@ singlyLinkedList.Head.Following.Following.Following.Following = singlyLinkedList
 Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
 Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
 
+singlyLinkedList.DetachLoop();
+Console.WriteLine("DetachLoop");
+
+Console.WriteLine($"Loop detected: {singlyLinkedList.DetectLoop()}");
+Console.WriteLine($"Loop detected on : {singlyLinkedList.StartingOfTheLoop()?.Data}");
+
 #endregion
 
 void PrintLinkedList(string? operation = null)
