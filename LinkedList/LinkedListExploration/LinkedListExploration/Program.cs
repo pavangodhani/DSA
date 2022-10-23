@@ -72,8 +72,23 @@ Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 #endregion
 
 #region Remove duplicates
-singlyLinkedList.RemoveDuplicatesFromSortedLL();
-PrintLinkedList("RemoveDuplicatesFromSortedLL");
+//singlyLinkedList.RemoveDuplicatesFromSortedLL();
+//PrintLinkedList("RemoveDuplicatesFromSortedLL");
+
+n = 1;
+while (n != 5)
+{
+    singlyLinkedList.InsertAtTail(n);
+    singlyLinkedList.InsertAtTail(n);
+    n++;
+}
+PrintLinkedList();
+
+//singlyLinkedList.RemoveDuplicatesFromUnSortedLLUsingHashSet();
+//PrintLinkedList("RemoveDuplicatesFromUnSortedLLUsingHashSet");
+
+singlyLinkedList.RemoveDuplicatesFromUnSortedLLUsingNestedLoop();
+PrintLinkedList("RemoveDuplicatesFromUnSortedLLUsingNestedLoop");
 #endregion
 
 void PrintLinkedList(string? operation = null)
@@ -86,3 +101,5 @@ void PrintLinkedList(string? operation = null)
     }
     Console.WriteLine($"\nTotal count: {singlyLinkedList.Count}\n");
 }
+
+Console.ReadLine();

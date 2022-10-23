@@ -241,6 +241,65 @@ namespace SinglyLinkedList.Models
                 following = current?.Following;
             }
         }
+
+        /// <summary>
+        ///  Time: O(n)
+        ///  Space: O(n)
+        /// </summary>
+        public void RemoveDuplicatesFromUnSortedLLUsingHashSet()
+        {
+            if (Head is null)
+                return;
+
+            HashSet<T> hashSet = new();
+
+            Node<T>? current = Head;
+            Node<T>? preceding = Head;
+
+            while (current != null)
+            {
+                if (hashSet.Contains(current.Data))
+                {
+                    preceding.Following = current.Following;
+                    Count--;
+                }
+                else
+                {
+                    hashSet.Add(current.Data);
+                    preceding = current;
+                }
+                current = current.Following;
+            }
+        }
+
+        public void RemoveDuplicatesFromUnSortedLLUsingNestedLoop()
+        {
+            if (Head is null)
+                return;
+
+            Node<T>? current = Head;
+
+            while (current != null)
+            {
+                Node<T>? temp = current.Following;
+                Node<T>? preceding = current;
+                while (temp != null)
+                {
+                    if (current.Data!.Equals(temp.Data))
+                    {
+                        preceding.Following = temp.Following;
+                        Count--;
+                    }
+                    else
+                    {
+                        preceding = temp;
+                    }
+                    temp = temp.Following;
+                }
+
+                current = current.Following;
+            }
+        }
         #endregion
 
         #region Private Methods
